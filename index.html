@@ -1,11 +1,148 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Portafolio</title>
-</head>
-<body>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portafolio - Ronald Picado</title>
 
-<p>Holis</p>
+    <!-- Favicon -->
+    <link rel="icon" href="resources/Favicon.png" type="image/png">
+
+    <!-- Tipografía Commissioner desde Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Commissioner&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Configuración personalizada de Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        commissioner: ['Commissioner', 'sans-serif'],
+                    },
+                    colors: {
+                        lime: '#C9D45C',
+                        coral: '#D26666',
+                        forest: '#226F54'
+                    },
+                    fontSize: {
+                        h1: '33px',
+                        h2: '25px',
+                        h3: '21px',
+                        body: '17px'
+                    },
+                    transitionProperty: {
+                        'spacing': 'margin, padding',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Commissioner', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-white text-forest relative">
+
+<!-- BOTÓN VOLVER ARRIBA -->
+<a href="#" class="fixed bottom-5 right-5 bg-lime text-white px-4 py-2 rounded-full shadow-lg hover:bg-lime/80 transition-all duration-300 z-50"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75 12 3m0 0 3.75 3.75M12 3v18" />
+</svg>
+</a>
+
+<!-- ENCABEZADO -->
+<header class="bg-lime text-white font-commissioner shadow-md sticky top-0 z-40">
+    <nav class="flex items-center justify-between px-6 py-4">
+        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center overflow-hidden">
+            <img src="resources/Isologotipo.png" alt="Logo" class="w-10 h-10 object-contain" />
+        </div>
+        <ul class="flex space-x-8 text-h2">
+            <li><a href="#sobre-mi" class="relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-1 after:bg-white after:transition-all after:duration-300 hover:after:w-full">Sobre mí</a></li>
+            <li><a href="#experiencia" class="relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-1 after:bg-white after:transition-all after:duration-300 hover:after:w-full">Experiencia</a></li>
+            <li><a href="#proyectos" class="relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-1 after:bg-white after:transition-all after:duration-300 hover:after:w-full">Proyectos</a></li>
+            <li><a href="#mision-vision" class="relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-1 after:bg-white after:transition-all after:duration-300 hover:after:w-full">Misión y Visión</a></li>
+            <li><a href="#contacto" class="relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-1 after:bg-white after:transition-all after:duration-300 hover:after:w-full">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- SOBRE MÍ -->
+<section id="sobre-mi" class="p-10 fade-in">
+    <h1 class="text-h1 font-bold mb-4 text-coral">Sobre mí</h1>
+    <p class="text-body">
+        Ingeniero en Desarrollo de Software con más de 4 años de experiencia en soporte técnico en el Sistema Educativo Saint Clare. Durante este tiempo, he desarrollado habilidades sólidas en redes, servidores (locales y en la nube), sistemas de telefonía, cámaras y soporte de primer nivel en equipos como impresoras, parlantes y conexiones de red. También he brindado soporte técnico en entornos audiovisuales, incluyendo sistemas de sonido para eventos y transmisiones en vivo.<br><br>
+        Actualmente curso una pasantía como ingeniero en desarrollo de software en Moody’s, donde aplico tecnologías como C#, .NET y Kafka, fortaleciendo mis habilidades en programación backend y desarrollo de soluciones empresariales. Me caracteriza un enfoque autodidacta, orientado a la mejora continua y a la resolución efectiva de problemas técnicos.
+    </p>
+</section>
+
+<!-- EXPERIENCIA -->
+<section id="experiencia" class="p-10 bg-lime/10 fade-in">
+    <h2 class="text-h2 font-bold mb-4 text-coral">Experiencia</h2>
+    <div class="text-body text-gray-700 italic">Agregar mi experiencia laboral</div>
+</section>
+
+<!-- PROYECTOS -->
+<section id="proyectos" class="p-10 fade-in">
+    <h2 class="text-h2 font-bold mb-6 text-coral">Proyectos</h2>
+    <div class="flex overflow-x-auto space-x-6">
+        <div class="min-w-[300px] bg-lime/30 rounded-xl p-4 shadow-md transform transition-transform hover:scale-105 hover:shadow-lg">
+            <h3 class="text-h3 font-semibold mb-2">Proyecto 1</h3>
+            <p class="text-body">Agregar la foto de Mi proyecto personal</p>
+        </div>
+        <div class="min-w-[300px] bg-lime/30 rounded-xl p-4 shadow-md transform transition-transform hover:scale-105 hover:shadow-lg">
+            <h3 class="text-h3 font-semibold mb-2">Proyecto 2</h3>
+            <p class="text-body">Agregar lo de RuralAnimal</p>
+        </div>
+        <div class="min-w-[300px] bg-lime/30 rounded-xl p-4 shadow-md transform transition-transform hover:scale-105 hover:shadow-lg">
+            <h3 class="text-h3 font-semibold mb-2">Proyecto 3</h3>
+            <p class="text-body">Agregar lo de SIMEPCI</p>
+        </div>
+    </div>
+</section>
+
+<!-- MISIÓN Y VISIÓN -->
+<section id="mision-vision" class="p-10 bg-lime/10 fade-in">
+    <h2 class="text-h2 font-bold mb-6 text-coral">Misión y Visión</h2>
+    <div class="mb-4">
+        <h3 class="text-h3 font-semibold text-forest">Misión</h3>
+        <p class="text-body">Diseñar y desarrollar soluciones tecnológicas que combinen lógica, creatividad e innovación, creando sistemas robustos que respondan a los desafíos reales de manera eficiente y original. Mi propósito es generar valor a través del pensamiento técnico y la imaginación aplicada.</p>
+    </div>
+    <div>
+        <h3 class="text-h3 font-semibold text-forest">Visión</h3>
+        <p class="text-body">Ser un profesional referente en el desarrollo de software backend, reconocido por fusionar la tecnología con la creatividad para construir soluciones innovadoras, escalables y funcionales que transformen la forma en que las personas interactúan con los sistemas.</p>
+    </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="p-10 fade-in">
+    <h2 class="text-h2 font-bold mb-6 text-coral">Contacto</h2>
+    <form class="space-y-4">
+        <input type="text" placeholder="Nombre" class="w-full p-3 border border-gray-300 rounded" />
+        <input type="email" placeholder="Correo electrónico" class="w-full p-3 border border-gray-300 rounded" />
+        <textarea rows="5" placeholder="Mensaje" class="w-full p-3 border border-gray-300 rounded"></textarea>
+        <button type="submit" class="bg-lime text-white px-6 py-2 rounded hover:bg-lime/80 transition-all duration-300">Enviar</button>
+    </form>
+</section>
+
+<!-- PIE DE PÁGINA -->
+<footer class="bg-forest text-white p-6 text-center">
+    <div class="flex justify-center space-x-6 mb-2">
+        <a href="https://github.com/ronytrox" target="_blank" class="hover:text-lime transition-colors duration-300">
+            <span class="text-h2">GitHub</span>
+        </a>
+        <a href="https://www.linkedin.com/in/ronald-picado-hernandez-772531160/" target="_blank" class="hover:text-lime transition-colors duration-300">
+            <span class="text-h2">LinkedIn</span>
+        </a>
+    </div>
+    <p class="text-body">© 2025 Ronald Picado</p>
+</footer>
+
 </body>
 </html>
