@@ -11,10 +11,16 @@
     <!-- Tipografía Commissioner -->
     <link href="https://fonts.googleapis.com/css2?family=Commissioner&display=swap" rel="stylesheet">
 
+    <!-- Envio de correos -->
+    <script
+            type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+
+
     <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    
     <!-- Tailwind Config -->
     <script>
         tailwind.config = {
@@ -53,17 +59,14 @@
 
 <!-- ENCABEZADO -->
 <header class="bg-lime text-white text-h2 py-4 px-8 flex items-center justify-between">
-    <div class="flex items-center gap-8 w-full">
-        <!-- Logo circular -->
-        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center overflow-hidden">
-            <img src="resources/Isologotipo.png" alt="Logo" class="w-12 h-12 object-contain">
-        </div>
+    <!-- Botón idioma a la izquierda -->
+    <button id="lang-btn" onclick="switchLanguage()" class="bg-white text-lime text-[16px] px-4 py-2 rounded shadow hover:bg-[#f2f2f2] transition font-bold">
+        ES
+    </button>
 
-        <!-- Botón idioma -->
-        <button id="lang-btn" onclick="switchLanguage()" class="bg-white text-lime text-[16px] px-4 py-2 rounded shadow hover:bg-[#f2f2f2] transition font-bold">ES</button>
-
-        <!-- Menú -->
-        <nav class="flex gap-8 text-right w-full justify-end">
+    <!-- Menú + título centrados -->
+    <div class="flex flex-col items-center w-full max-w-4xl mx-auto text-center space-y-2">
+        <nav class="flex gap-8 justify-center w-full">
             <a href="#sobre-mi" class="nav-link">Sobre mí</a>
             <a href="#experiencia" class="nav-link">Experiencia</a>
             <a href="#proyectos" class="nav-link">Proyectos</a>
@@ -71,7 +74,22 @@
             <a href="#contacto" class="nav-link">Contacto</a>
         </nav>
     </div>
+
+    <!-- Botón descargar CV a la derecha -->
+    <a id="download-cv-btn" href="resources/CVEspaniol.pdf" download
+       class="bg-white text-lime text-[16px] px-4 py-2 rounded shadow hover:bg-[#f2f2f2] transition font-bold">
+        Descargar CV
+    </a>
 </header>
+
+<!-- ISÓLOGO + SLOGAN -->
+<section class="flex flex-col items-center mt-4 mb-10">
+    <img src="resources/Isologo.svg" alt="Isologo" class="w-32 h-auto mb-2" />
+    <p id="slogan-text" class="text-forest text-center text-lg font-semibold">
+        Donde la tecnología se encuentra con la imaginación
+    </p>
+</section>
+
 
 <!-- BURBUJA WHATSAPP -->
 <a href="https://wa.me/50662193228" target="_blank" class="fixed bottom-20 right-5 z-50 bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-lg transition duration-300">
@@ -90,16 +108,17 @@
         </p>
     </section>
 
-    <section id="experiencia" class="p-10 bg-lime/10 fade-in">
-        <h2 class="text-h2 font-bold mb-4 text-coral">Experiencia</h2>
-        <p class="text-body italic text-gray-700">Agregar experiencia laboral.</p>
+    <section id="experiencia" class="p-10 bg-lime/10 fade-in max-w-4xl mx-auto rounded-lg shadow-lg">
+        <h2 class="text-h2 font-bold mb-8 text-coral text-center">Experiencia</h2>
+        <div id="experiencia-list" class="space-y-8 text-forest"></div>
     </section>
+
 
     <section id="proyectos" class="p-10 fade-in flex flex-col items-center">
         <h2 class="text-h2 font-bold mb-10 text-coral text-center">Proyectos</h2>
 
         <!-- Carousel wrapper -->
-        <div class="relative w-full max-w-4xl h-[400px] flex items-center justify-center overflow-hidden">
+        <div class="relative w-full max-w-[1100px] h-[450px] flex items-center justify-center overflow-hidden">
 
             <!-- Left button -->
             <button onclick="changeSlide(-1)"
@@ -114,40 +133,45 @@
             </button>
 
             <!-- Cards -->
-            <div id="carousel-3d" class="relative w-full h-full flex items-center justify-center">
-                <!-- Card 1 -->
-                <div class="carousel-card absolute bg-lime/30 rounded-xl p-6 shadow-md w-80 h-[350px] transition-all duration-700"
+            <div id="carousel-3d" class="relative w-[1000px] h-full flex items-center justify-center">
+
+                <!-- Card 1: RuralAnimal -->
+                <div class="carousel-card absolute bg-lime/30 rounded-xl p-6 shadow-md w-96 h-[420px] transition-all duration-700 flex flex-col items-center"
                      data-index="0">
+                    <img src="resources/RuralAnimal.jpeg" alt="RuralAnimal" class="w-full h-40 object-cover rounded-md mb-4" />
                     <h3 class="text-h3 font-semibold mb-2">RuralAnimal</h3>
-                    <p class="text-body mb-4">
-                        Sistema web llamado Rural Animal, creado para necesidades Agropecuarias, los usuarios pueden ofertar o subastar sus animales, visualizar en 3D, reservar citas por medio de un chat con IA.
+                    <p class="text-body mb-1 text-center">
+                        Sistema web creado para necesidades Agropecuarias, los usuarios pueden ofertar o subastar sus animales, visualizar en 3D, reservar citas por medio de un chat con IA.
                     </p>
                     <a href="https://github.com/atorress91/rural-animal-frontend" target="_blank"
-                       class="inline-block text-white bg-forest px-4 py-2 rounded hover:bg-forest/80 transition">Ver
-                        repositorio</a>
+                       class="inline-block text-white bg-forest px-4 py-2 rounded hover:bg-forest/80 transition">Ver repositorio</a>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="carousel-card absolute bg-lime/30 rounded-xl p-6 shadow-md w-80 h-[350px] transition-all duration-700"
+                <!-- Card 2: SIMEPCI -->
+                <div class="carousel-card absolute bg-lime/30 rounded-xl p-6 shadow-md w-96 h-[420px] transition-all duration-700 flex flex-col items-center"
                      data-index="1">
-                    <h3 class="text-h3 font-semibold mb-2">MiPortfolio</h3>
-                    <p class="text-body mb-4">
-                        Portafolio personal con cambio de idioma, diseño responsivo y animaciones suaves usando Tailwind y JavaScript.
+                    <img src="resources/SIMEPCI.jpeg" alt="SIMEPCI" class="w-full h-40 object-cover rounded-md mb-4" />
+                    <h3 class="text-h3 font-semibold mb-2">SIMEPCI</h3>
+                    <p class="text-body mb-4 text-center">
+                        Proyecto de sitio web para la agenda de citas de atención médica.
                     </p>
                     <a href="#" target="_blank"
                        class="inline-block text-white bg-forest px-4 py-2 rounded hover:bg-forest/80 transition">Ver repositorio</a>
                 </div>
 
-                <!-- Card 3 -->
-                <div class="carousel-card absolute bg-lime/30 rounded-xl p-6 shadow-md w-80 h-[350px] transition-all duration-700"
+                <!-- Card 3: Proyecto P5JS -->
+                <div class="carousel-card absolute bg-lime/30 rounded-xl p-6 shadow-md w-96 h-[420px] transition-all duration-700 flex flex-col items-center"
                      data-index="2">
-                    <h3 class="text-h3 font-semibold mb-2">SaintClareTools</h3>
-                    <p class="text-body mb-4">
-                        Herramientas internas para el Sistema Educativo Saint Clare, automatización de reportes y gestión de usuarios.
+                    <img src="resources/ProyectoP5js.png" alt="Proyecto P5JS" class="w-full h-40 object-cover rounded-md mb-4" />
+                    <h3 class="text-h3 font-semibold mb-2">Proyecto P5JS</h3>
+                    <p class="text-body mb-4 text-center">
+                        Proyecto personal de investigación del Creative Coding con el uso de circunferencias y el plano cartesiano en JavaScript.
                     </p>
-                    <a href="#" target="_blank"
-                       class="inline-block text-white bg-forest px-4 py-2 rounded hover:bg-forest/80 transition">Ver repositorio</a>
+                    <a href="https://editor.p5js.org/ronytrox/sketches/RjLve4QaD" target="_blank"
+                       class="inline-block text-white bg-forest px-4 py-2 rounded hover:bg-forest/80 transition">Ver código</a>
                 </div>
+
+
             </div>
         </div>
     </section>

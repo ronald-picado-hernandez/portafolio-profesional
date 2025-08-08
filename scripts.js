@@ -16,7 +16,24 @@ Actualmente curso una pasantía como ingeniero en desarrollo de software en Mood
         },
         experiencia: {
             title: 'Experiencia',
-            text: 'Agregar experiencia laboral.'
+            saintClare: {
+                company: 'Asociación Sistema Educativo Saint Clare',
+                role: 'Soporte Técnico',
+                duties: [
+                    'Administración de servidores y usuarios en Active Directory y Azure AD.',
+                    'Automatización de procesos con Power Automate.',
+                    'Soporte técnico, telecomunicaciones, redes y sistemas HikVision.'
+                ]
+            },
+            moodys: {
+                company: 'Moody’s',
+                role: 'Pasante de Desarrollo Back-End',
+                duties: [
+                    'Desarrollo de APIs con C# y .NET Core.',
+                    'Ingesta de datos en tiempo real con Kafka y Flink en Java.',
+                    'Participación en microservicios y metodologías ágiles (SCRUM).'
+                ]
+            }
         },
         proyectos: {
             title: 'Proyectos',
@@ -24,6 +41,16 @@ Actualmente curso una pasantía como ingeniero en desarrollo de software en Mood
                 title: 'RuralAnimal',
                 text: 'Sistema web llamado Rural Animal, creado para necesidades Agropecuarias, los usuarios pueden ofertar o subastar sus animales, visualizar en 3D, reservar citas por medio de un chat con IA.',
                 repo: 'Ver repositorio'
+            },
+            simepci: {
+                title: 'SIMEPCI',
+                text: 'Proyecto de sitio web para la agenda de citas de atención médica.',
+                repo: 'Ver repositorio'
+            },
+            p5js: {
+                title: 'Proyecto P5JS',
+                text: 'Proyecto personal de investigación del Creative Coding con el uso de circunferencias y el plano cartesiano en JavaScript.',
+                repo: 'Ver código'
             }
         },
         misionVision: {
@@ -48,6 +75,10 @@ Actualmente curso una pasantía como ingeniero en desarrollo de software en Mood
             github: 'GitHub',
             linkedin: 'LinkedIn',
             copyright: '© 2025 Ronald Picado'
+        },
+        slogan: "Donde la tecnología se encuentra con la imaginación",
+        downloadCV: {
+            text: "Descargar CV"
         }
     },
     en: {
@@ -67,7 +98,24 @@ I am currently doing a software engineering internship at Moody’s, where I wor
         },
         experiencia: {
             title: 'Experience',
-            text: 'Add work experience.'
+            saintClare: {
+                company: 'Saint Clare Educational System Association',
+                role: 'Technical Support',
+                duties: [
+                    'Administration of servers and users in Active Directory and Azure AD.',
+                    'Process automation with Power Automate.',
+                    'Technical support, telecommunications, networks, and HikVision systems.'
+                ]
+            },
+            moodys: {
+                company: 'Moody’s',
+                role: 'Back-End Development Intern',
+                duties: [
+                    'API development with C# and .NET Core.',
+                    'Real-time data ingestion with Kafka and Flink in Java.',
+                    'Participation in microservices and agile methodologies (SCRUM).'
+                ]
+            }
         },
         proyectos: {
             title: 'Projects',
@@ -75,6 +123,16 @@ I am currently doing a software engineering internship at Moody’s, where I wor
                 title: 'RuralAnimal',
                 text: 'Web system called Rural Animal, created for agricultural needs. Users can sell or auction their animals, view them in 3D, and book appointments through an AI-powered chat.',
                 repo: 'View repository'
+            },
+            simepci: {
+                title: 'SIMEPCI',
+                text: 'Website project for medical appointment scheduling.',
+                repo: 'View repository'
+            },
+            p5js: {
+                title: 'P5JS Project',
+                text: 'Personal research project on Creative Coding using circles and Cartesian plane in JavaScript.',
+                repo: 'View code'
             }
         },
         misionVision: {
@@ -99,6 +157,10 @@ I am currently doing a software engineering internship at Moody’s, where I wor
             github: 'GitHub',
             linkedin: 'LinkedIn',
             copyright: '© 2025 Ronald Picado'
+        },
+        slogan: "Where technology meets imagination",
+        downloadCV: {
+            text: "Download CV"
         }
     }
 };
@@ -133,13 +195,13 @@ function updateCarousel() {
         else if (offset === -1 || (currentIndex === 0 && index === total - 1)) {
             card.style.zIndex = 5;
             card.style.opacity = 0.5;
-            card.style.transform = 'translateX(-300px) scale(0.85)';
+            card.style.transform = 'translateX(-380px) scale(0.85)';
         }
         // Right card
         else if (offset === 1 || (currentIndex === total - 1 && index === 0)) {
             card.style.zIndex = 5;
             card.style.opacity = 0.5;
-            card.style.transform = 'translateX(300px) scale(0.85)';
+            card.style.transform = 'translateX(380px) scale(0.85)';
         }
         // Hidden cards (not visible in carousel of 3)
         else {
@@ -149,6 +211,7 @@ function updateCarousel() {
         }
     });
 }
+
 
 function changeSlide(direction) {
     const cards = document.querySelectorAll('.carousel-card');
@@ -179,19 +242,89 @@ function applyTranslations() {
     });
     document.getElementById('lang-btn').innerText = t.nav.langBtn;
 
+    // Actualizar slogan
+    const slogan = document.getElementById('slogan-text');
+    slogan.innerText = t.slogan;
+
+    // Actualizar texto y link del botón descargar CV
+    const downloadBtn = document.getElementById('download-cv-btn');
+    downloadBtn.innerText = t.downloadCV.text;
+    downloadBtn.href = currentLang === 'es' ? 'resources/CVEspaniol.pdf' : 'resources/CVIngles.pdf';
+
     // Sobre mí
     document.querySelector('#sobre-mi h1').innerText = t.sobreMi.title;
     document.querySelector('#sobre-mi p').innerHTML = t.sobreMi.text;
 
     // Experiencia
     document.querySelector('#experiencia h2').innerText = t.experiencia.title;
-    document.querySelector('#experiencia p').innerText = t.experiencia.text;
+
+    // Renderizar experiencia detallada
+    const experienciaList = document.getElementById('experiencia-list');
+    if (experienciaList) {
+        experienciaList.innerHTML = ''; // limpiar contenido previo
+
+        // Iterar cada experiencia
+        ['saintClare', 'moodys'].forEach(key => {
+            const exp = t.experiencia[key];
+            if (!exp) return;
+
+            const container = document.createElement('div');
+            container.classList.add('experience-item', 'mb-6');
+
+            const company = document.createElement('h3');
+            company.classList.add('text-h3', 'font-semibold');
+            company.innerText = exp.company;
+            container.appendChild(company);
+
+            const role = document.createElement('p');
+            role.classList.add('font-medium', 'italic', 'mb-2');
+            role.innerText = exp.role;
+            container.appendChild(role);
+
+            const ul = document.createElement('ul');
+            ul.classList.add('list-disc', 'list-inside');
+            exp.duties.forEach(duty => {
+                const li = document.createElement('li');
+                li.innerText = duty;
+                ul.appendChild(li);
+            });
+            container.appendChild(ul);
+
+            experienciaList.appendChild(container);
+        });
+    } else {
+        // Si no existe contenedor, puedes mostrar un texto simple
+        const expParagraph = document.querySelector('#experiencia p');
+        if (expParagraph) expParagraph.innerText = t.experiencia.text;
+    }
 
     // Proyectos
     document.querySelector('#proyectos h2').innerText = t.proyectos.title;
-    document.querySelector('#proyectos h3').innerText = t.proyectos.ruralAnimal.title;
-    document.querySelector('#proyectos p').innerText = t.proyectos.ruralAnimal.text;
-    document.querySelector('#proyectos a').innerText = t.proyectos.ruralAnimal.repo;
+
+    // Actualizar cards de proyecto (asumiendo data-index 0,1,2)
+    const cards = document.querySelectorAll('#carousel-3d .carousel-card');
+    if (cards.length >= 3) {
+        // Card 0 - RuralAnimal
+        cards[0].querySelector('h3').innerText = t.proyectos.ruralAnimal.title;
+        cards[0].querySelector('p').innerText = t.proyectos.ruralAnimal.text;
+        const link0 = cards[0].querySelector('a');
+        link0.innerText = t.proyectos.ruralAnimal.repo;
+        link0.href = "https://github.com/atorress91/rural-animal-frontend";
+
+        // Card 1 - SIMEPCI
+        cards[1].querySelector('h3').innerText = t.proyectos.simepci.title;
+        cards[1].querySelector('p').innerText = t.proyectos.simepci.text;
+        const link1 = cards[1].querySelector('a');
+        link1.innerText = t.proyectos.simepci.repo;
+        link1.href = "#";  // O pon aquí el enlace correcto si tienes
+
+        // Card 2 - Proyecto P5JS
+        cards[2].querySelector('h3').innerText = t.proyectos.p5js.title;
+        cards[2].querySelector('p').innerText = t.proyectos.p5js.text;
+        const link2 = cards[2].querySelector('a');
+        link2.innerText = t.proyectos.p5js.repo;
+        link2.href = "https://editor.p5js.org/ronytrox/sketches/RjLve4QaD";
+    }
 
     // Misión y Visión
     document.querySelector('#mision-vision h2').innerText = t.misionVision.title;
@@ -215,6 +348,40 @@ function applyTranslations() {
     document.querySelector('footer p').innerText = t.footer.copyright;
 }
 
+
 document.addEventListener("DOMContentLoaded", () => {
     applyTranslations();
 });
+
+// Inicializar EmailJS
+(function(){
+    emailjs.init({
+        publicKey: "TUuGdYD1XRdtZ5OLp"
+    });
+})();
+
+document.getElementById("contact-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const formStatus = document.getElementById("form-status");
+    formStatus.innerText = currentLang === 'es' ? "Enviando..." : "Sending...";
+
+    // Enviar el formulario
+    emailjs.sendForm("service_w3e3zt7", "template_4ds7uew", this)
+        .then(() => {
+            formStatus.style.color = "green";
+            formStatus.innerText = currentLang === 'es'
+                ? "Mensaje enviado correctamente"
+                : "Message sent successfully";
+            this.reset();
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+            formStatus.style.color = "red";
+            formStatus.innerText = currentLang === 'es'
+                ? "Error al enviar el mensaje"
+                : "Error sending message";
+        });
+});
+
+
