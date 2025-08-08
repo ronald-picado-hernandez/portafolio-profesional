@@ -165,13 +165,6 @@ I am currently doing a software engineering internship at Moody’s, where I wor
     }
 };
 
-function scrollCarousel(direction) {
-    const carousel = document.getElementById('carousel');
-    const card = carousel.querySelector('div');
-    const cardWidth = card.offsetWidth + 24; // + gap between cards (24px)
-    carousel.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
-}
-
 let currentIndex = 0;
 
 function updateCarousel() {
@@ -293,7 +286,6 @@ function applyTranslations() {
             experienciaList.appendChild(container);
         });
     } else {
-        // Si no existe contenedor, puedes mostrar un texto simple
         const expParagraph = document.querySelector('#experiencia p');
         if (expParagraph) expParagraph.innerText = t.experiencia.text;
     }
