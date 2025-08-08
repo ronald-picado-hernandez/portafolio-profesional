@@ -8,13 +8,14 @@
     <!-- Favicon -->
     <link rel="icon" href="resources/Favicon.png" type="image/png">
 
-    <!-- Tipografía Commissioner desde Google Fonts -->
+    <!-- Tipografía Commissioner -->
     <link href="https://fonts.googleapis.com/css2?family=Commissioner&display=swap" rel="stylesheet">
 
-    <!-- Tailwind CSS CDN -->
+    <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Configuración personalizada de Tailwind -->
+    
+    <!-- Tailwind Config -->
     <script>
         tailwind.config = {
             theme: {
@@ -32,104 +33,158 @@
                         h2: '25px',
                         h3: '21px',
                         body: '17px'
-                    },
-                    transitionProperty: {
-                        'spacing': 'margin, padding',
                     }
                 }
             }
         }
     </script>
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-        body {
-            font-family: 'Commissioner', sans-serif;
-        }
-    </style>
+
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-white text-forest relative">
+<body class="bg-white text-forest relative font-commissioner">
 
 <!-- BOTÓN VOLVER ARRIBA -->
-<a href="#" class="fixed bottom-5 right-5 bg-lime text-white px-4 py-2 rounded-full shadow-lg hover:bg-lime/80 transition-all duration-300 z-50"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75 12 3m0 0 3.75 3.75M12 3v18" />
-</svg>
+<a href="#" class="fixed bottom-5 right-5 bg-lime text-white px-4 py-2 rounded-full shadow-lg hover:bg-lime/80 transition-all duration-300 z-50">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75 12 3m0 0 3.75 3.75M12 3v18" />
+    </svg>
 </a>
 
 <!-- ENCABEZADO -->
-<header class="bg-lime text-white font-commissioner shadow-md sticky top-0 z-40">
-    <nav class="flex items-center justify-between px-6 py-4">
+<header class="bg-lime text-white text-h2 py-4 px-8 flex items-center justify-between">
+    <div class="flex items-center gap-8 w-full">
+        <!-- Logo circular -->
         <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center overflow-hidden">
-            <img src="resources/Isologotipo.png" alt="Logo" class="w-10 h-10 object-contain" />
+            <img src="resources/Isologotipo.png" alt="Logo" class="w-12 h-12 object-contain">
         </div>
-        <ul class="flex space-x-8 text-h2">
-            <li><a href="#sobre-mi" class="relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-1 after:bg-white after:transition-all after:duration-300 hover:after:w-full">Sobre mí</a></li>
-            <li><a href="#experiencia" class="relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-1 after:bg-white after:transition-all after:duration-300 hover:after:w-full">Experiencia</a></li>
-            <li><a href="#proyectos" class="relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-1 after:bg-white after:transition-all after:duration-300 hover:after:w-full">Proyectos</a></li>
-            <li><a href="#mision-vision" class="relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-1 after:bg-white after:transition-all after:duration-300 hover:after:w-full">Misión y Visión</a></li>
-            <li><a href="#contacto" class="relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-1 after:bg-white after:transition-all after:duration-300 hover:after:w-full">Contacto</a></li>
-        </ul>
-    </nav>
+
+        <!-- Botón idioma -->
+        <button id="lang-btn" onclick="switchLanguage()" class="bg-white text-lime text-[16px] px-4 py-2 rounded shadow hover:bg-[#f2f2f2] transition font-bold">ES</button>
+
+        <!-- Menú -->
+        <nav class="flex gap-8 text-right w-full justify-end">
+            <a href="#sobre-mi" class="nav-link">Sobre mí</a>
+            <a href="#experiencia" class="nav-link">Experiencia</a>
+            <a href="#proyectos" class="nav-link">Proyectos</a>
+            <a href="#mision-vision" class="nav-link">Misión y Visión</a>
+            <a href="#contacto" class="nav-link">Contacto</a>
+        </nav>
+    </div>
 </header>
 
-<!-- SOBRE MÍ -->
-<section id="sobre-mi" class="p-10 fade-in">
-    <h1 class="text-h1 font-bold mb-4 text-coral">Sobre mí</h1>
-    <p class="text-body">
-        Ingeniero en Desarrollo de Software con más de 4 años de experiencia en soporte técnico en el Sistema Educativo Saint Clare. Durante este tiempo, he desarrollado habilidades sólidas en redes, servidores (locales y en la nube), sistemas de telefonía, cámaras y soporte de primer nivel en equipos como impresoras, parlantes y conexiones de red. También he brindado soporte técnico en entornos audiovisuales, incluyendo sistemas de sonido para eventos y transmisiones en vivo.<br><br>
-        Actualmente curso una pasantía como ingeniero en desarrollo de software en Moody’s, donde aplico tecnologías como C#, .NET y Kafka, fortaleciendo mis habilidades en programación backend y desarrollo de soluciones empresariales. Me caracteriza un enfoque autodidacta, orientado a la mejora continua y a la resolución efectiva de problemas técnicos.
-    </p>
-</section>
+<!-- BURBUJA WHATSAPP -->
+<a href="https://wa.me/50662193228" target="_blank" class="fixed bottom-20 right-5 z-50 bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-lg transition duration-300">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+        <path d="M12 0C5.372 0 0 5.373 0 12a11.95 11.95 0 0 0 1.666 6.11L0 24l6.153-1.613A11.957 11.957 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm5.935 17.052c-.252.704-1.484 1.384-2.042 1.469-.557.085-1.212.121-1.948-.192a17.963 17.963 0 0 1-1.837-.958 14.55 14.55 0 0 1-3.603-3.594 8.31 8.31 0 0 1-1.01-1.83c-.193-.451-.04-.987.22-1.293.285-.332.57-.537.875-.537h.398c.3 0 .563.022.81.594.295.699.63 1.344 1.024 1.932.268.399.547.749.842 1.06.233.246.546.545.94.833.484.354.932.583 1.346.68.394.093.757.083 1.05-.127.268-.19.46-.469.644-.746.173-.26.346-.363.57-.242.223.12 1.32.623 1.546.738.226.114.378.17.434.264.056.094.056.548-.197 1.252z"/>
+    </svg>
+</a>
 
-<!-- EXPERIENCIA -->
-<section id="experiencia" class="p-10 bg-lime/10 fade-in">
-    <h2 class="text-h2 font-bold mb-4 text-coral">Experiencia</h2>
-    <div class="text-body text-gray-700 italic">Agregar mi experiencia laboral</div>
-</section>
+<!-- SECCIONES -->
+<main>
+    <section id="sobre-mi" class="p-10 fade-in">
+        <h1 class="text-h1 font-bold mb-4 text-coral">Sobre mí</h1>
+        <p class="text-body">
+            Ingeniero en Desarrollo de Software con más de 4 años de experiencia en soporte técnico en el Sistema Educativo Saint Clare. Durante este tiempo, he desarrollado habilidades sólidas en redes, servidores (locales y en la nube), sistemas de telefonía, cámaras y soporte de primer nivel en equipos como impresoras, parlantes y conexiones de red. También he brindado soporte técnico en entornos audiovisuales, incluyendo sistemas de sonido para eventos y transmisiones en vivo.<br><br>
+            Actualmente curso una pasantía como ingeniero en desarrollo de software en Moody’s, donde aplico tecnologías como C#, .NET y Kafka, fortaleciendo mis habilidades en programación backend y desarrollo de soluciones empresariales. Me caracteriza un enfoque autodidacta, orientado a la mejora continua y a la resolución efectiva de problemas técnicos.
+        </p>
+    </section>
 
-<!-- PROYECTOS -->
-<section id="proyectos" class="p-10 fade-in">
-    <h2 class="text-h2 font-bold mb-6 text-coral">Proyectos</h2>
-    <div class="flex overflow-x-auto space-x-6">
-        <div class="min-w-[300px] bg-lime/30 rounded-xl p-4 shadow-md transform transition-transform hover:scale-105 hover:shadow-lg">
-            <h3 class="text-h3 font-semibold mb-2">Proyecto 1</h3>
-            <p class="text-body">Agregar la foto de Mi proyecto personal</p>
+    <section id="experiencia" class="p-10 bg-lime/10 fade-in">
+        <h2 class="text-h2 font-bold mb-4 text-coral">Experiencia</h2>
+        <p class="text-body italic text-gray-700">Agregar experiencia laboral.</p>
+    </section>
+
+    <section id="proyectos" class="p-10 fade-in flex flex-col items-center">
+        <h2 class="text-h2 font-bold mb-10 text-coral text-center">Proyectos</h2>
+
+        <!-- Carousel wrapper -->
+        <div class="relative w-full max-w-4xl h-[400px] flex items-center justify-center overflow-hidden">
+
+            <!-- Left button -->
+            <button onclick="changeSlide(-1)"
+                    class="absolute left-0 z-20 bg-forest text-white p-2 rounded-full hover:bg-forest/80 transition">
+                &#10094;
+            </button>
+
+            <!-- Right button -->
+            <button onclick="changeSlide(1)"
+                    class="absolute right-0 z-20 bg-forest text-white p-2 rounded-full hover:bg-forest/80 transition">
+                &#10095;
+            </button>
+
+            <!-- Cards -->
+            <div id="carousel-3d" class="relative w-full h-full flex items-center justify-center">
+                <!-- Card 1 -->
+                <div class="carousel-card absolute bg-lime/30 rounded-xl p-6 shadow-md w-80 h-[350px] transition-all duration-700"
+                     data-index="0">
+                    <h3 class="text-h3 font-semibold mb-2">RuralAnimal</h3>
+                    <p class="text-body mb-4">
+                        Sistema web llamado Rural Animal, creado para necesidades Agropecuarias, los usuarios pueden ofertar o subastar sus animales, visualizar en 3D, reservar citas por medio de un chat con IA.
+                    </p>
+                    <a href="https://github.com/atorress91/rural-animal-frontend" target="_blank"
+                       class="inline-block text-white bg-forest px-4 py-2 rounded hover:bg-forest/80 transition">Ver
+                        repositorio</a>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="carousel-card absolute bg-lime/30 rounded-xl p-6 shadow-md w-80 h-[350px] transition-all duration-700"
+                     data-index="1">
+                    <h3 class="text-h3 font-semibold mb-2">MiPortfolio</h3>
+                    <p class="text-body mb-4">
+                        Portafolio personal con cambio de idioma, diseño responsivo y animaciones suaves usando Tailwind y JavaScript.
+                    </p>
+                    <a href="#" target="_blank"
+                       class="inline-block text-white bg-forest px-4 py-2 rounded hover:bg-forest/80 transition">Ver repositorio</a>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="carousel-card absolute bg-lime/30 rounded-xl p-6 shadow-md w-80 h-[350px] transition-all duration-700"
+                     data-index="2">
+                    <h3 class="text-h3 font-semibold mb-2">SaintClareTools</h3>
+                    <p class="text-body mb-4">
+                        Herramientas internas para el Sistema Educativo Saint Clare, automatización de reportes y gestión de usuarios.
+                    </p>
+                    <a href="#" target="_blank"
+                       class="inline-block text-white bg-forest px-4 py-2 rounded hover:bg-forest/80 transition">Ver repositorio</a>
+                </div>
+            </div>
         </div>
-        <div class="min-w-[300px] bg-lime/30 rounded-xl p-4 shadow-md transform transition-transform hover:scale-105 hover:shadow-lg">
-            <h3 class="text-h3 font-semibold mb-2">Proyecto 2</h3>
-            <p class="text-body">Agregar lo de RuralAnimal</p>
-        </div>
-        <div class="min-w-[300px] bg-lime/30 rounded-xl p-4 shadow-md transform transition-transform hover:scale-105 hover:shadow-lg">
-            <h3 class="text-h3 font-semibold mb-2">Proyecto 3</h3>
-            <p class="text-body">Agregar lo de SIMEPCI</p>
-        </div>
-    </div>
-</section>
+    </section>
 
-<!-- MISIÓN Y VISIÓN -->
-<section id="mision-vision" class="p-10 bg-lime/10 fade-in">
-    <h2 class="text-h2 font-bold mb-6 text-coral">Misión y Visión</h2>
-    <div class="mb-4">
-        <h3 class="text-h3 font-semibold text-forest">Misión</h3>
-        <p class="text-body">Diseñar y desarrollar soluciones tecnológicas que combinen lógica, creatividad e innovación, creando sistemas robustos que respondan a los desafíos reales de manera eficiente y original. Mi propósito es generar valor a través del pensamiento técnico y la imaginación aplicada.</p>
-    </div>
-    <div>
-        <h3 class="text-h3 font-semibold text-forest">Visión</h3>
-        <p class="text-body">Ser un profesional referente en el desarrollo de software backend, reconocido por fusionar la tecnología con la creatividad para construir soluciones innovadoras, escalables y funcionales que transformen la forma en que las personas interactúan con los sistemas.</p>
-    </div>
-</section>
 
-<!-- CONTACTO -->
-<section id="contacto" class="p-10 fade-in">
-    <h2 class="text-h2 font-bold mb-6 text-coral">Contacto</h2>
-    <form class="space-y-4">
-        <input type="text" placeholder="Nombre" class="w-full p-3 border border-gray-300 rounded" />
-        <input type="email" placeholder="Correo electrónico" class="w-full p-3 border border-gray-300 rounded" />
-        <textarea rows="5" placeholder="Mensaje" class="w-full p-3 border border-gray-300 rounded"></textarea>
-        <button type="submit" class="bg-lime text-white px-6 py-2 rounded hover:bg-lime/80 transition-all duration-300">Enviar</button>
-    </form>
-</section>
+
+
+    <section id="mision-vision" class="p-10 bg-lime/10 fade-in">
+        <h2 class="text-h2 font-bold mb-6 text-coral">Misión y Visión</h2>
+        <div class="mb-4">
+            <h3 class="text-h3 font-semibold text-forest">Misión</h3>
+            <p class="text-body">
+                Diseñar y desarrollar soluciones tecnológicas que combinen lógica, creatividad e innovación, creando sistemas robustos que respondan a los desafíos reales de manera eficiente y original. Mi propósito es generar valor a través del pensamiento técnico y la imaginación aplicada.
+            </p>
+        </div>
+        <div>
+            <h3 class="text-h3 font-semibold text-forest">Visión</h3>
+            <p class="text-body">
+                Ser un profesional referente en el desarrollo de software backend, reconocido por fusionar la tecnología con la creatividad para construir soluciones innovadoras, escalables y funcionales que transformen la forma en que las personas interactúan con los sistemas.
+            </p>
+        </div>
+    </section>
+
+    <section id="contacto" class="p-10 fade-in">
+        <h2 class="text-h2 font-bold mb-10 text-coral text-center">Contacto</h2>
+        <form id="contact-form" class="max-w-xl mx-auto flex flex-col gap-4">
+            <input type="text" name="nombre" placeholder="Nombre" required class="p-3 border rounded">
+            <input type="email" name="correo" placeholder="Correo electrónico" required class="p-3 border rounded">
+            <textarea name="mensaje" placeholder="Mensaje" required class="p-3 border rounded"></textarea>
+            <button type="submit" class="bg-forest text-white px-4 py-2 rounded hover:bg-forest/80 transition">
+                Enviar
+            </button>
+            <p id="form-status" class="text-center mt-2"></p>
+        </form>
+    </section>
+
+</main>
 
 <!-- PIE DE PÁGINA -->
 <footer class="bg-forest text-white p-6 text-center">
@@ -144,5 +199,7 @@
     <p class="text-body">© 2025 Ronald Picado</p>
 </footer>
 
+<!-- JavaScript -->
+<script src="scripts.js"></script>
 </body>
 </html>
